@@ -1,0 +1,14 @@
+<div class="row text-center">
+	<%= form_for(Project.new, remote: true) do |f| %>
+		<div class"large-10 large centered columns">
+			<%= f.text_field :pro, placeholder: "Pro Name" %>
+		</div>
+		<div class"large-10 large centered columns">
+			<%= f.text_field :content, placeholder: "Tags seperated with ," %>
+		</div>
+		<div class"large-10 large centered columns">
+			<%= f.submit :project, class: "button" %>
+		</div>
+		<% end %>
+		</div>
+</div>
