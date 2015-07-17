@@ -14,7 +14,7 @@ You can generate the model like so: (Note you can include the assocations when g
 
 	`rails g model post author:string content:text`
 	
-	`rails g modeltagging post:belongs_to tag:belongs_to ` 
+	`rails g model tagging post:belongs_to tag:belongs_to ` 
 
 The last rails generation creates a model like so:
 ```
