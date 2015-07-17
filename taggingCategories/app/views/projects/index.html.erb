@@ -4,6 +4,12 @@
 			<%= render partial: "projects/new" %>
 		</div>
 	</div>
+	<div class="tags-cloud glassy-bg">
+		<h4>Tags Cloud</h4>
+		<% tag_cloud Tag.counts, %w{css1 css2 css3 css4} do |tag, css_class| %>
+			<%= link_to tag.name, tag_path(tag.name), class: css_class %>
+		<% end %>
+	</div>
 	<div class="large-7 columns" id="projects">
 		<%= render partial: @projects.reverse %>
 	</div>

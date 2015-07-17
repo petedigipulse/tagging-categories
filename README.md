@@ -15,6 +15,7 @@ You can generate the model like so: (Note you can include the assocations when g
 	rails g modeltagging post:belongs_to tag:belongs_to  
 
 The last rails generation creates a model like so:
+'''
 class CreateTaggings < ActiveRecord::Migration
   def change
     create_table :taggings do |t|
@@ -25,7 +26,7 @@ class CreateTaggings < ActiveRecord::Migration
     end
   end
 end
-
+'''
 The Taggings table is the join table between Projects and Tags.
 
 To handle the creation of Tags as part of the Project Create form, we define a method, to take all of the tags and stip them and then wrote each tag to the database. 
@@ -109,6 +110,35 @@ end
 Just make sure you upate your routes for the search result. 
 get 'tags/:tag', to: 'projects#index', as: "tag"
 
+Oh and in the views make sure you add: 
+<%=raw tag_links(project.all_tags) %> (the raw just strips out the string and ensures that the tags stay within the link. )
+
+... and you could do a helper which creates the links_to in other words it will hold the logic of converting the tags to links like so:
+def tag_links(tags)
+	tags.split(",").map{|tag| link_to tag.strip, tag_path(tag.strip) }.join(", ")
+end
+
 Pretty sweet eh?
+
+We can make a tag cloud to go even further this will give you an idea of how to display popular projects or posts or whatever you're working on. 
+
+We need to create the method in the tags model. 
+
+def self.counts
+	self.select("name, count(taggings.tag_id) as count").joins(:taggings).group("taggings.tag_id")
+end
+
+So what we've just done is created a query that groups the matched tag_ids from the taggings join table and counts them all up. 
+We can style them with a helper method called tag_cloud by taking the result of calling the counts function and CSS classes. 
+
+in the project helper folder do the following:
+
+def tag_cloud(tags, classes)
+	max = tags.sort_by(&:count).last
+	tags.each do |tag|
+	index = tag.count.to_f / max.count * (classes.size-1)
+	yield(tag, classes[index.round])
+	end
+end
 
 
