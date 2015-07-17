@@ -87,3 +87,28 @@ Lets create the form"
 The remote: true is an attribute that tells the form to submit via ajax rather than the browser mechanism.
 It will then redirect to the index action and view the existing projects. 
 
+Foundation didn't go as easy as I thought it would or render perhaps what I wanted it to. I find Bootstrap easier to set up. Maybe because I'm more famliar with it. 
+
+Tag Based Search
+
+Creating a scope based search in a tag name is as easy as creating a class method called tagged_with(name) which will take the name of the specified tag and search projects associated with it. 
+ In projects model create:
+def self.tagged_with(name)
+	Tag.find_by_name!(name).projects
+end
+
+Then in controller create an instance variable to hold the results on the controller. 
+def index
+	if params[:tag]
+		@projects = Project.tagged_by(params[:tag])
+	else
+		@projects = Project.all
+	end
+end
+
+Just make sure you upate your routes for the search result. 
+get 'tags/:tag', to: 'projects#index', as: "tag"
+
+Pretty sweet eh?
+
+

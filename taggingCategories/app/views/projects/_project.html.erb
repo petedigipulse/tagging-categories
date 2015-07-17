@@ -1,0 +1,13 @@
+<%= div_for project do %>
+	<div class="large-12 cloumns border border-box glassy-bg mt pt">
+		<strong><%= h(project.pro) %></strong><br /> 
+		<sup class="text-muted">From <%= time_ago_in_words(project.created_at) %></sup><br />
+		<div class="mb pb"> 
+			<%= h(project.content) %>
+		</div>
+		<div class="tags">
+		<%=raw project.all_tags %>
+		</div>
+	</div>
+<% end %>
+	

@@ -1,0 +1,4 @@
+var new_project = $("<%= escape_javascript(render(partial: @project))%>").hide();
+$('#projects').prepend(new_project);
+$('#project_<%= @project.id %>').fadeIn('slow');
+$('#new_project')[0].reset();

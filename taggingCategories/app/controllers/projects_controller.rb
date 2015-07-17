@@ -1,6 +1,10 @@
 class ProjectsController < ApplicationController
   def index
-  	@project = Project.all
+    if params[:tag]
+      @projects = Project.tagged_with(params[:tag])
+    else
+    	@projects = Project.all
+    end
   end
 
   def create

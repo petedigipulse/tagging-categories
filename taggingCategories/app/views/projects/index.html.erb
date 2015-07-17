@@ -1,5 +1,10 @@
-<div class="row">
-	<div class="large-8 columns">
-		<%= render partial: "projects/new" %>
+<div class="row mt pt">
+	<div class="large-5 columns">
+		<div class="top-pad glassy-bg">
+			<%= render partial: "projects/new" %>
+		</div>
+	</div>
+	<div class="large-7 columns" id="projects">
+		<%= render partial: @projects.reverse %>
 	</div>
 </div>
