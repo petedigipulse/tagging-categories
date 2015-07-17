@@ -10,9 +10,11 @@ A many to many relationship can be represented by an associaion in Rails in the 
 1. Use a has_and_belongs_to_many (habtm) association. This creates a join table in the database, but doesn't create the model for the join. In other words you won't be able to create attributes to the join or validations. 
 
 2. Use of a has_and_many, through requires a model for the join table. 
-You can generate the model like so: (Note you can include the assocations when generating th model. 
-	rails g model post author:string content:text
-	rails g modeltagging post:belongs_to tag:belongs_to  
+You can generate the model like so: (Note you can include the assocations when generating th model.)
+
+	`rails g model post author:string content:text`
+	
+	`rails g modeltagging post:belongs_to tag:belongs_to ` 
 
 The last rails generation creates a model like so:
 ```
