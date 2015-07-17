@@ -123,9 +123,10 @@ Just make sure you upate your routes for the search result.
 
 
 Oh and in the views make sure you add:
-`
-<%=raw tag_links(project.all_tags) %> (the raw just strips out the string and ensures that the tags stay within the link. )
-`
+
+`<%=raw tag_links(project.all_tags) %> `
+(the raw just strips out the string and ensures that the tags stay within the link.)
+
 ... and you could do a helper which creates the links_to in other words it will hold the logic of converting the tags to links like so:
 
 ```
