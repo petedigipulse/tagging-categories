@@ -10,6 +10,10 @@ The following are my notes for when I come back to complete the lesson.
 
 ###Many To Many Relationships
 
+###Tag Model
+Before we get into things lets create a tag model with name as the attribute
+'rails g model tag name:string'
+
 A many to many relationship can be represented by an associaion in Rails in the following ways.
 
 1. Use of a **has_and_belongs_to_many** (habtm) association. This creates a join table in the database, but doesn't create the model for the join. In other words you can't create attributes in the join or validations. 
