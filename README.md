@@ -6,7 +6,7 @@ people learning Rails and wanting to know more about databases and associations.
 
 The following are my notes for when I come back to complete the lesson. 
 
-.......................................
+....................................................................................................................
 
 ###Many To Many Relationships
 
